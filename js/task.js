@@ -32,7 +32,7 @@ Object.defineProperty(firObj, 'toString', {
 
 console.log(secObj.toString());
 
-console.log('-------------------');
+console.log('-----------------------------------------');
 
 // let Constructor = function(name) {
 // 	this.name = name;
@@ -55,12 +55,10 @@ class ObjConstructor {
 		this.name = name;
 		this.isCompleted = false;
 	}
-
 	complete() {
 		console.log(`compliting task ${this.name}`);
 	 	this.isCompleted = true;
 	}
-
 	save() {
 		console.log(`saving task ${this.name}`);
 	}
@@ -73,3 +71,36 @@ let task3 = new ObjConstructor('create demo obj for singletons');
 task1.complete();
 task2.save();
 task3.save();
+
+console.log('-----------------------------------------');
+
+class TestClass {
+	constructor(text, cssClass, color) {
+		this.text = text;
+		this.cssClass = cssClass;
+		this.color = color;
+	}
+	showMethod() {
+		document.querySelector(`.${this.cssClass}`).innerHTML = `<p style="color: ${this.color};">${this.text}</p>`;
+	}
+	logMethod() {
+		console.log(`Hi ${this.color}`);
+	}
+}
+
+class TestClass2 extends TestClass {
+	constructor(text, cssClass, color, bg) {
+		super (text, cssClass, color);
+		this.bg = bg;
+	}
+	showMethod() {
+		document.querySelector(`.${this.cssClass}`).innerHTML = `<p style="color: ${this.color}; background-color: ${this.bg}">${this.text}</p>`;
+	}
+}
+
+let firstClass = new TestClass('Testing class opportunities', 'testClass', 'orange');
+let secondClass = new TestClass2('Testing class opportunities 2', 'testClass2', 'blue', 'black');
+
+firstClass.showMethod();
+secondClass.showMethod();
+secondClass.logMethod();
