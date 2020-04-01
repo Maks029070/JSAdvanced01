@@ -1,29 +1,32 @@
-const User = (function() {
-	let name = 'Maksym';
-	let age = 19;
-
-	function getName() {
-		return name;
-	}
-	function getAge() {
-		return age;
-	}
-	function changeName(newName) {
-		name = newName;
-	}
+const users = (function() {
+	db = [];
 
 	return {
-		getName: getName,
-		getAge: getAge,
-		changeName, changeName
+		getName: function getName(id) {
+			return db[id].name;
+		},
+		getAge: function (id) {
+			return db[id].age;
+		},
+		changeName: function (id, newName) {
+			db[id].name = newName;
+		},
+		save: function(task) {
+			db.push(task);
+		}
 	}
 })();
 
-console.log(User.name); // impossieble to receive name
-console.log(User.age); // impossieble to receive age
+class Task {
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+}
 
-console.log(User.getName());
-console.log(User.getAge()); // but we can get name and age thanks to our methods getName and getAge
-
-User.changeName('Thomas');
-console.log(User.getName());
+const task1 = new Task('Maksym', '19');
+users.save(task1);
+console.log(users.getName(0));
+console.log(users.getAge(0));
+users.changeName(0, 'Thomas');
+console.log(users.getName(0));
