@@ -1,4 +1,4 @@
-const users = (function() {
+const User = (function() {
 	db = [];
 
 	return {
@@ -11,22 +11,24 @@ const users = (function() {
 		changeName: function (id, newName) {
 			db[id].name = newName;
 		},
-		save: function(task) {
-			db.push(task);
+		changeAge: function (id, newAge) {
+			db[id].age = newAge;
+		},
+		create: function(userName, userAge) {
+			let user = {
+				name: userName,
+				age: userAge
+			}
+			db.push(user);
+			console.log(`Creating new user ${user.name} with id ${db.length - 1}`);
 		}
 	}
 })();
 
-class Task {
-	constructor(name, age) {
-		this.name = name;
-		this.age = age;
-	}
-}
-
-const task1 = new Task('Maksym', '19');
-users.save(task1);
-console.log(users.getName(0));
-console.log(users.getAge(0));
-users.changeName(0, 'Thomas');
-console.log(users.getName(0));
+User.create('Maksym', 19);
+console.log(User.getName(0));
+console.log(User.getAge(0));
+User.changeName(0, 'Thomas');
+User.changeAge(0, 35);
+console.log(User.getName(0));
+console.log(User.getAge(0));

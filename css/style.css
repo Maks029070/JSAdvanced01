@@ -1,0 +1,65 @@
+.container {
+	width: 90%;
+	position: absolute;
+	left: 5%; 
+	box-sizing: border-box;
+	height: 700px;
+	margin-top: 100px;
+}
+.player1_field, .player2_field, .play_field {
+	box-sizing: border-box;
+	float: left;
+}
+.player1_field, .player2_field {
+	width: 25%;
+}
+.play_field {
+	width: 50%;
+	height: 700px;
+}
+.play_field>div {
+	width: 33%;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	height: 33%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	background-color: #DEFFAF;
+}
+.player1_field>img, .player2_field>img {
+	width: 70%;
+}
+.player1_field>img {
+	margin-left: 50px;
+}
+.player2_field>img {
+	margin-left: 50px;
+	margin-top: 50px;
+}
+.player1 {
+	background: url(../img/x.png);
+	background-size: 100%;
+}
+.player2 {
+	background: url(../img/0.png);
+	background-size: 100%;
+}
+.player1_field>span, .player2_field>span {
+	position: absolute;
+	font-size: 24px;
+	top: 600px;
+}
+.player1_field>span {
+	left: 9%;
+}
+.player2_field>span {
+	left: 85%;
+}
+.whose_turn {
+	position: absolute;
+	left: 45%;
+	top: 50px;
+	z-index: 1;
+	font-size: 24px;
+}
